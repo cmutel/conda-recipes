@@ -1,6 +1,6 @@
 {% set name = "constructive_geometries" %}
-{% set version = "0.7" %}
-{% set sha256 = "cfe1cb916ec787f90efbb9e1e71b30af00dc6e4dbd397269d2bdf7c018297da9" %}
+{% set version = "0.8.1" %}
+{% set sha256 = "91db12fa1d3875533029a982b36caa951e3fe6958d17142cbdbdddced9e5f86e" %}
 
 package:
   name: {{ name|lower }}
@@ -13,8 +13,10 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record record.txt
+  ignore_run_exports:
+    - python_abi
 
 requirements:
   build:
