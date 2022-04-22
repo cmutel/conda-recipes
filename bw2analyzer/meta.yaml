@@ -1,6 +1,6 @@
 {% set name = "bw2analyzer" %}
-{% set version = "0.11.1" %}
-{% set sha256 = "b9a85ea4a2b80c3cb02e22e4c7856177a94d3d3b5763ff37a49262063a9dafd0" %}
+{% set version = "0.11.2" %}
+{% set sha256 = "13c1a52f8eca8fbfd5dc6fd1dd12fa74bf9dba91a88225f1b7e2462058ee99ed" %}
 
 package:
   name: {{ name|lower }}
@@ -24,8 +24,8 @@ requirements:
     - setuptools
 
   run:
-    - bw2calc >=2.0.dev3
-    - bw2data >=4.0.dev8
+    - bw2calc
+    - bw2data
     - matplotlib-base
     - numpy
     - pandas
