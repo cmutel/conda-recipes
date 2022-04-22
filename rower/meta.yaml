@@ -1,6 +1,6 @@
 {% set name = "rower" %}
-{% set version = "0.2" %}
-{% set sha256 = "5f3756eb5e5e4e2098f01722eacde0961f18f8a364d44040585f5d31af56955e" %}
+{% set version = "0.3" %}
+{% set sha256 = "8d3907486894349f4869404f168e41c39e414a8585f381a3a9091054ab29c8e8" %}
 
 package:
   name: {{ name|lower }}
@@ -15,13 +15,12 @@ build:
   noarch: python
   number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
+  ignore_run_exports:
+    - python_abi
 
 requirements:
   build:
-    - appdirs
-    - bw2data
-    - pyprind
-    - python
+    - python >=3.9
     - setuptools
 
   run:
@@ -35,9 +34,9 @@ test:
     - {{ name }}
 
 about:
-  home: https://github.com/PascalLesage/rower
+  home: https://github.com/cmutel/rower
   license: BSD 3-Clause
   license_file: LICENSE
   summary: 'Consistently define, label, and manage "Rest-of-World" locations for processes in Brightway databases'
   license_family: BSD
-  dev_url: https://github.com/PascalLesage/rower
+  dev_url: https://github.com/cmutel/rower
