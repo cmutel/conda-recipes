@@ -1,6 +1,6 @@
 {% set name = "constructive_geometries" %}
-{% set version = "0.8.1" %}
-{% set sha256 = "91db12fa1d3875533029a982b36caa951e3fe6958d17142cbdbdddced9e5f86e" %}
+{% set version = "0.8.2" %}
+{% set sha256 = "a52602689a941ee4407f73149899dbe6ba6ff935d74f1e59a66c79e7a11bb66f" %}
 
 package:
   name: {{ name|lower }}
@@ -13,24 +13,20 @@ source:
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
   ignore_run_exports:
     - python_abi
 
 requirements:
   build:
-    - country_converter
-    - fiona
     - python
     - setuptools
-    - shapely
-    - wrapt
 
   run:
+    - python
     - country_converter
     - fiona
-    - python
     - shapely
     - wrapt
 

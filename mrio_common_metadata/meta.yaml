@@ -1,6 +1,6 @@
 {% set name = "mrio_common_metadata" %}
-{% set version = "0.2" %}
-{% set sha256 = "665165e9f1546090d425bc38783cfbcaeaf8d4eed61bbf19f06c8b280828bd08" %}
+{% set version = "0.2.1" %}
+{% set sha256 = "0d315da7262d3f064346325e4e6739d7cdec255c263d2ce7d54ae3e9732e757c" %}
 
 package:
   name: {{ name|lower }}
@@ -15,6 +15,8 @@ build:
   noarch: python
   number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
+  ignore_run_exports:
+    - python_abi
 
 requirements:
   build:
