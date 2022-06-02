@@ -1,6 +1,6 @@
 {% set name = "bw2calc" %}
-{% set version = "2.0.dev6" %}
-{% set sha256 = "c65afa2775e85c7323161663e0d17cb439730eca7eab6fa5c292c68ca607de5b" %}
+{% set version = "2.0.dev7" %}
+{% set sha256 = "332f428cadcad78b699301eefb7e154730135809f4963d081447899ec792ded6" %}
 
 package:
   name: {{ name|lower }}
@@ -29,13 +29,13 @@ requirements:
     - numpy >=1.20
     - scipy
     - stats_arrays
-    - bw_processing >=0.7
-    - matrix_utils >=0.2.2
+    - bw_processing >=0.8
+    - matrix_utils >=0.2.5
 
 test:
   requires:
     - pytest
-    - bw2data >=4.0.dev11
+    - bw2data >=4.0.dev13
 
   imports:
     - {{ name }}
