@@ -1,6 +1,6 @@
 {% set name = "bw2regional" %}
-{% set version = "0.6.dev1" %}
-{% set sha256 = "ae7e5954a48923fc833ef75daf3699ec91ca8a620850b03794b7b46a895a63b7" %}
+{% set version = "0.6.dev2" %}
+{% set sha256 = "ffa40382e6c00890012f302871f69d27261035f3333c75d3773aa9c2e2aa093c" %}
 
 package:
   name: {{ name|lower }}
@@ -12,10 +12,11 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  # Build command: conda build -c konstantinstadler -c cmutel -c conda-forge bw2regional
   noarch: python
   number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
+  ignore_run_exports:
+    - python_abi
 
 requirements:
   build:
@@ -23,20 +24,21 @@ requirements:
     - setuptools
 
   run:
-    - bw2calc >=2.0.dev2
-    - bw2data >=4.0.dev7
-    - constructive_geometries
+    - bw2calc >=2.0.dev5
+    - bw2data >=4.0.dev12
+    - constructive_geometries >=0.8.1
     - fiona
-    - pandarus >=1.0.4
-    - matrix_utils >=0.1.4
+    - geopandas
+    - matrix_utils >=0.2.3
+    - pandarus >=1.1
     - pandas
-    - rasterio
-    - scipy
-    - shapely
     - pyprind
     - python
+    - rasterio
     - requests
+    - scipy
     - setuptools
+    - shapely
     - voluptuous
     - wrapt
 

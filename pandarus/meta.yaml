@@ -1,6 +1,6 @@
 {% set name = "pandarus" %}
-{% set version = "1.0.4" %}
-{% set sha256 = "f254803461cbbccf5af597729e4a55b97e08021df2d53d607c1cc249b7f2f67b" %}
+{% set version = "1.1" %}
+{% set sha256 = "8810e919539e8f72102f55943a6c9dc0fe222f2d06b2118a8f3123debccd8b3d" %}
 
 package:
   name: {{ name|lower }}
@@ -15,20 +15,13 @@ build:
   noarch: python
   number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
+  ignore_run_exports:
+    - python_abi
 
 requirements:
   build:
     - python
     - setuptools
-    - appdirs
-    - fiona
-    - numpy
-    - pyproj
-    - rtree
-    - rasterio
-    - rasterstats
-    - shapely
-    - certifi
 
   run:
     - python
