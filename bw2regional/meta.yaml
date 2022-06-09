@@ -1,6 +1,6 @@
 {% set name = "bw2regional" %}
-{% set version = "0.6.dev2" %}
-{% set sha256 = "ffa40382e6c00890012f302871f69d27261035f3333c75d3773aa9c2e2aa093c" %}
+{% set version = "0.6.dev6" %}
+{% set sha256 = "149cb28641d4f3df89501bce2b8b888190763f0b5c6bd5697e789c1811dda23e" %}
 
 package:
   name: {{ name|lower }}
@@ -14,7 +14,7 @@ source:
 build:
   noarch: python
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: {{ PYTHON }} setup.py install --single-version-externally-managed --record record.txt
   ignore_run_exports:
     - python_abi
 
@@ -24,18 +24,18 @@ requirements:
     - setuptools
 
   run:
-    - bw2calc >=2.0.dev5
-    - bw2data >=4.0.dev12
-    - constructive_geometries >=0.8.1
+    - bw2calc >=2.0.dev6
+    - bw2data >=4.0.dev13
+    - constructive_geometries
     - fiona
     - geopandas
     - matrix_utils >=0.2.3
     - pandarus >=1.1
-    - pandas
     - pyprind
     - python
     - rasterio
     - requests
+    - rower
     - scipy
     - setuptools
     - shapely

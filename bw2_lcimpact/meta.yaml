@@ -1,6 +1,6 @@
 {% set name = "bw2_lcimpact" %}
-{% set version = "0.4.1" %}
-{% set sha256 = "ed2daeb72419c7d5707ab861c02a9b86fe88371da3536ea3944aef1b7ffd098f" %}
+{% set version = "0.4.2" %}
+{% set sha256 = "9e7035308985e28012318cb1ceca7874c0fcb01a92f5b26d9290c71e8f303d45" %}
 
 package:
   name: {{ name|lower }}
@@ -26,7 +26,8 @@ requirements:
     - python
     - bw2data >=2.0
     - python
-    - xlrd
+    - openpyxl
+    - tqdm
 
 test:
   imports:

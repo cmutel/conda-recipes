@@ -1,6 +1,6 @@
 {% set name = "wurst" %}
-{% set version = "0.3.1" %}
-{% set sha256 = "0bae67f99a86ca70282c82d9c08798a59e017ee1b5daca2f5001739758f064a5" %}
+{% set version = "0.3.2" %}
+{% set sha256 = "b74415086bdfa4cede38f47febaa9ce7e7b40ad201bed9f0fbd1517d3e9e3bb2" %}
 
 package:
   name: {{ name|lower }}
@@ -12,11 +12,11 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  # build command: conda build -c konstantinstadler -c cmutel -c conda-forge wurst
-  # build command if errors: conda build -c konstantinstadler -c cmutel -c conda-forge wurst --numpy 1.20 --python 3.9
   noarch: python
   number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
+  ignore_run_exports:
+    - python_abi
 
 requirements:
   build:

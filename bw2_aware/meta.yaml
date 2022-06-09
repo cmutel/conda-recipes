@@ -1,6 +1,6 @@
 {% set name = "bw2_aware" %}
-{% set version = "0.2" %}
-{% set sha256 = "0044a3d1cd131b4ae2b7dc6d882337f9388eda2d5674c922f87d3b55c8051d44" %}
+{% set version = "0.3" %}
+{% set sha256 = "7cab5e31782d192a6e8eaa912c36848843c7d15b988497ba27d16c0494074dde" %}
 
 package:
   name: {{ name|lower }}
@@ -16,44 +16,22 @@ build:
   noarch_python: True
   number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
+  ignore_run_exports:
+    - python_abi
 
 requirements:
   build:
     - python
     - setuptools
-    - brightway2
-    - bw2calc >=1.2
-    - bw2data >=2.0
-    - bw2regional >=0.5.1
-    - constructive_geometries
-    - eight
-    - fiona
-    - pandas
-    - pandarus >=1.0
-    - python
-    - requests
-    - rower
-    - setuptools
-    - stats_arrays
-    - voluptuous
-    - wrapt
 
   run:
     - python
-    - brightway2
-    - bw2calc >=1.2
-    - bw2data >=2.0
+    - setuptools
+    - bw2data
     - bw2regional >=0.5.1
     - constructive_geometries
-    - eight
     - fiona
-    - pandas
-    - pandarus >=1.0
-    - python
-    - requests
     - rower
-    - stats_arrays
-    - voluptuous
     - wrapt
 
 test:
