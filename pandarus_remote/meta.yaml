@@ -1,0 +1,50 @@
+{% set name = "pandarus_remote" %}
+{% set version = "1.1" %}
+{% set sha256 = "b59641e4ad270b3e4a6edb8aee97b0eb015132e85fbbad33343afb27db9d62f5" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  ignore_run_exports:
+    - python_abi
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - appdirs
+    - docopt
+    - fiona
+    - flask
+    - pandarus
+    - peewee
+    - redis
+    - rasterio
+    - requests
+    - rq
+
+test:
+  imports:
+    - {{ name }}
+
+about:
+  home: https://github.com/cmutel/pandarus_remote
+  license: BSD 3-Clause
+  license_file: LICENSE.txt
+  summary: 'Flask app for Pandarus '
+  license_family: BSD
+  doc_url: https://github.com/cmutel/pandarus_remote
+  dev_url: https://github.com/cmutel/pandarus_remote
