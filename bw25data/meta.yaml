@@ -1,6 +1,6 @@
 {% set name = "bw2data" %}
-{% set version = "4.0.dev15" %}
-{% set sha256 = "070627bfc9d6aac5407a3929e48dd39dc8d039942728ce3fdf7d46351eb1f8e7" %}
+{% set version = "4.0.dev17" %}
+{% set sha256 = "f2e690cd9f907979c1da73de2711f38ae5a7cb231818bd2a76b43caa7f4d6bd0" %}
 
 package:
   name: {{ name|lower }}
@@ -38,6 +38,7 @@ requirements:
     - requests >=2.25
     - scipy >=1.6
     - stats_arrays >=0.6.5
+    - tqdm
     - voluptuous >=0.12
     - whoosh
     - wrapt >=1.12
