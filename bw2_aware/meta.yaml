@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  # Build command: conda build -c conda-forge -c cmutel -c konstantinstadler bw2_lcimpact
+  # Build command: conda build -c conda-forge -c cmutel bw2_aware
   noarch_python: True
   number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
