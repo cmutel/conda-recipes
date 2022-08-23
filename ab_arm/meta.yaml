@@ -1,0 +1,42 @@
+package:
+  name: activity-browser-arm
+  version: "{{ GIT_DESCRIBE_TAG }}"
+
+source:
+  git_rev: master
+  git_url: https://github.com/LCA-ActivityBrowser/activity-browser.git
+
+build:
+  noarch: python
+  number: 0
+  script: "{{ PYTHON }} setup.py install --single-version-externally-managed --record record.txt"
+  entry_points:
+    - activity-browser = activity_browser:run_activity_browser
+    - activity-browser-cleanup = activity_browser.bwutils:cleanup
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python >=3.9
+    - arrow
+    - brightway2_nosolver
+    - scikit-umfpack
+    - pyperclip
+    - eidl >=1.4.2
+    - networkx
+    - pyside2 >=5.13.1
+    - salib >=1.4
+    - seaborn
+
+about:
+  home: https://github.com/LCA-ActivityBrowser/activity-browser
+  license: LGPL3+
+  license_family: LGPL
+  license_file: LICENSE.txt
+  summary: GUI for brightway2
+  description: |
+    The Activity Browser is a graphical user interface for the [brightway2](https://brightway.dev/)
+    advanced life cycle assessment framework. More details and installation instructions can be found
+    on [github](https://github.com/LCA-ActivityBrowser/activity-browser).
