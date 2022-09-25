@@ -1,6 +1,6 @@
 {% set name = "bw2calc" %}
-{% set version = "2.0.dev8" %}
-{% set sha256 = "2287fe45812af481fea6c0fc99248125775ee5f23ad2ba0f589d66d4bbd01f49" %}
+{% set version = "2.0.dev12" %}
+{% set sha256 = "7295a87064f0c6bc175fca937269426dcb96b7673dca45ae2c98336f966d57ad" %}
 
 package:
   name: {{ name|lower }}
@@ -35,7 +35,7 @@ requirements:
 test:
   requires:
     - pytest
-    - bw2data >=4.0.dev13
+    - bw2data >=4.0.dev17
 
   imports:
     - {{ name }}
