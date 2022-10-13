@@ -14,7 +14,7 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record record.txt
   ignore_run_exports:
     - python_abi
@@ -29,7 +29,7 @@ requirements:
     - bw2analyzer <0.10.99
     - bw2calc >=1.8.1,<1.99
     - bw2data >=3.6.5,<3.99
-    - bw2io <0.8.9
+    - bw2io >=0.8.8,<0.8.9
     - bw2parameters >=0.6.6
     - numpy >=1.22
     - python >=3.9

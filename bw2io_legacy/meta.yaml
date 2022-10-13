@@ -1,6 +1,6 @@
 {% set name = "bw2io" %}
-{% set version = "0.9.dev10" %}
-{% set sha256 = "0b57597fbd8a44915f07ab38fc2a9d0042506bbe72a6f1a324d390e6158ead04" %}
+{% set version = "0.8.8" %}
+{% set sha256 = "d4edfc56c76c236717e748562de143912ada22aae64496d900f464b837fc7a1e" %}
 
 package:
   name: {{ name|lower }}
@@ -24,18 +24,16 @@ requirements:
     - setuptools
 
   run:
-    - bw2calc >=2.0.dev12
-    - bw2data >=4.0.dev17
-    - bw_processing
+    - bw2calc <2.0
+    - bw2data <3.9
     - astunparse >=1.6.1
     - lxml
-    - numpy >=1.20
+    - numpy
     - openpyxl
     - psutil
     - pyprind
-    - python >=3.9
+    - python
     - scipy
-    - tqdm
     - stats_arrays >=0.6.5
     - unidecode
     - voluptuous
