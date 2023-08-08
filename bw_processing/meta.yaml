@@ -1,6 +1,6 @@
 {% set name = "bw_processing" %}
-{% set version = "0.8" %}
-{% set sha256 = "f35d1e610390c4a0bf425a708dc2140be30cbbb85523da56f606e1edfa5cd567" %}
+{% set version = "0.8.2" %}
+{% set sha256 = "4d9261c7118b3fc24bef885e0486e7e26a343ce8ac1dc8ab0a2bd9884f8c6aa8" %}
 
 package:
   name: {{ name|lower }}
