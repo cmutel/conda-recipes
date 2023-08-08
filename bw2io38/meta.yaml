@@ -1,0 +1,63 @@
+{% set name = "bw2io" %}
+{% set version = "0.9.dev10" %}
+{% set sha256 = "0b57597fbd8a44915f07ab38fc2a9d0042506bbe72a6f1a324d390e6158ead04" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  ignore_run_exports:
+    - python_abi
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - bw2calc >=2.0.dev12
+    - bw2data >=4.0.dev17
+    - bw_processing
+    - astunparse >=1.6.1
+    - lxml
+    - numpy >=1.20
+    - openpyxl
+    - psutil
+    - pyprind
+    - python >=3.9
+    - scipy
+    - tqdm
+    - stats_arrays >=0.6.5
+    - unidecode
+    - voluptuous
+    - xlrd
+    - xlsxwriter
+    - mrio_common_metadata
+    - bw_migrations
+
+test:
+  imports:
+    - {{ name }}
+    - bw2io.data
+    - bw2io.export
+    - bw2io.extractors
+    - bw2io.importers
+    - bw2io.strategies
+
+about:
+  home: https://brightway.dev/
+  license: BSD 3-Clause
+  license_file: LICENSE.txt
+  summary: 'Tools for importing and export life cycle inventory databases'
+  license_family: BSD
+  doc_url: https://docs.brightway.dev
+  dev_url: https://github.com/brightway-lca/brightway2-io
