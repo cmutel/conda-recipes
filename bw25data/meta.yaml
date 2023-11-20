@@ -1,6 +1,6 @@
 {% set name = "bw2data" %}
-{% set version = "4.0.dev17" %}
-{% set sha256 = "f2e690cd9f907979c1da73de2711f38ae5a7cb231818bd2a76b43caa7f4d6bd0" %}
+{% set version = "4.0.dev33" %}
+{% set sha256 = "cbe37b52acb08acd2e1e5326078d65b7a7747ceb8ec6166afe1d852d9f9c50e7" %}
 
 package:
   name: {{ name|lower }}
@@ -24,18 +24,13 @@ requirements:
     - setuptools
 
   run:
-    - appdirs >=1.4.4
     - bw2parameters >=0.6.6
     - bw_processing >=0.8
-    - docopt >=0.6.2
-    - fasteners >=0.14.1
     - lxml >=4.6
     - numpy >=1.20
     - peewee >=3.14.4
-    - psutil >=5.8
-    - pyprind >=2.11
+    - platformdirs
     - python >=3.9
-    - requests >=2.25
     - scipy >=1.6
     - stats_arrays >=0.6.5
     - tqdm

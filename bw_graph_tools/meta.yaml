@@ -1,6 +1,6 @@
-{% set name = "constructive_geometries" %}
-{% set version = "0.9" %}
-{% set sha256 = "645ad2a20e28bbf84af4a7fee8264a5d7ead576570a702ebc285cb195d8dbadc" %}
+{% set name = "bw_graph_tools" %}
+{% set version = "0.3" %}
+{% set sha256 = "a5c7a50a4d65a8d2704281f622f88faed205a9b5ad82a995a5c71f33baec4a63" %}
 
 package:
   name: {{ name|lower }}
@@ -15,8 +15,6 @@ build:
   noarch: python
   number: 0
   script: python -m pip install --no-deps --ignore-installed .
-  ignore_run_exports:
-    - python_abi
 
 requirements:
   build:
@@ -24,19 +22,21 @@ requirements:
     - setuptools
 
   run:
-    - python
-    - country_converter
-    - fiona
-    - shapely
-    - wrapt
+    - bw2calc >=2.0.dev13
+    - matrix_utils
+    - numpy
+    - scipy
+    - bw_processing
 
 test:
   imports:
     - {{ name }}
 
 about:
-  home: https://github.com/ecoinvent/constructive_geometries
+  home: https://github.com/brightway-lca/bw_graph_tools
   license: BSD 3-Clause
   license_file: LICENSE
-  summary: 'Simple tools to define world locations from a set of topological faces and set algebra'
+  summary: 'Graph traversal class and utilities'
   license_family: BSD
+  doc_url: https://github.com/brightway-lca/bw_graph_tools/blob/main/README.md
+  dev_url: https://github.com/brightway-lca/bw_graph_tools

@@ -1,0 +1,44 @@
+{% set name = "ecoinvent_interface" %}
+{% set version = "2.4" %}
+{% set sha256 = "1464ae83ff78155dd8d6a62bd07fd8b35bf7c84c7b92a6d3e26c8be7ea11a55d" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - lxml
+    - platformdirs
+    - py7zr
+    - pydantic-settings
+    - pyecospold
+    - requests
+    - tqdm
+
+test:
+  imports:
+    - {{ name }}
+
+about:
+  home: https://github.com/brightway-lca/ecoinvent_interface
+  license: MIT
+  license_file: LICENSE
+  summary: 'Unofficial python interface to ecoinvent data '
+  license_family: MIT
+  doc_url: https://github.com/brightway-lca/ecoinvent_interface/blob/main/README.md
+  dev_url: https://github.com/brightway-lca/ecoinvent_interface

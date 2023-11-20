@@ -1,6 +1,6 @@
 {% set name = "bw2io" %}
-{% set version = "0.9.dev10" %}
-{% set sha256 = "0b57597fbd8a44915f07ab38fc2a9d0042506bbe72a6f1a324d390e6158ead04" %}
+{% set version = "0.9.dev26" %}
+{% set sha256 = "635a2ecca33a4548add4f094c80efb042426d4257a5ecacff6a567c110ad9503" %}
 
 package:
   name: {{ name|lower }}
@@ -24,25 +24,23 @@ requirements:
     - setuptools
 
   run:
-    - bw2calc >=2.0.dev12
-    - bw2data >=4.0.dev17
+    - bw2calc >=2.0.dev16
+    - bw2data >=4.0.dev32
+    - bw_migrations
     - bw_processing
-    - astunparse >=1.6.1
     - lxml
-    - numpy >=1.20
+    - mrio_common_metadata
+    - numpy >=1.24
     - openpyxl
-    - psutil
-    - pyprind
-    - python >=3.9
+    - python >=3.10
+    - requests
     - scipy
-    - tqdm
     - stats_arrays >=0.6.5
+    - tqdm
     - unidecode
     - voluptuous
     - xlrd
     - xlsxwriter
-    - mrio_common_metadata
-    - bw_migrations
 
 test:
   imports:
