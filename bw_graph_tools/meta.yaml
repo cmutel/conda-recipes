@@ -1,0 +1,45 @@
+{% set name = "bw_graph_tools" %}
+{% set version = "0.3.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/bw_graph_tools-{{ version }}.tar.gz
+  sha256: 4631564e5df93d65588280c035343f34d2c7115fa69b9b954ecbc3be25f676e3
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+
+requirements:
+  host:
+    - python >=3.9
+    - setuptools >=68.0
+    - pip
+  run:
+    - python >=3.9
+    - bw2calc >=2.0.dev13
+    - bw_processing
+    - matrix_utils
+    - numpy <2
+    - scipy
+
+test:
+  imports:
+    - bw_graph_tools
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  summary: Graph traversal class and utilities
+  license: BSD-3-Clause
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - cmutel
