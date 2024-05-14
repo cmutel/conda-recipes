@@ -1,5 +1,5 @@
 {% set name = "bw_aggregation" %}
-{% set version = "1.0" %}
+{% set version = "1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/bw_aggregation-{{ version }}.tar.gz
-  sha256: 82c911f623ad29825e9fd2c917187709c6dad524f6d21b9e9fadd7400875d94e
+  sha256: 71ff0e695e127ac693629bdd45af07ae7957401d7b96be15c48efd41d4b026ad
 
 build:
   noarch: python
