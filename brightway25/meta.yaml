@@ -13,7 +13,7 @@ source:
 
 build:
   noarch: python
-  number: 10
+  number: 11
   script: python setup.py install --single-version-externally-managed --record record.txt
   ignore_run_exports:
     - python_abi
@@ -25,16 +25,16 @@ requirements:
 
   run:
     - bw2analyzer >=0.11.4
-    - bw2calc >=2.0.dev12
-    - bw2data >=4.0.dev18
-    - bw2io >=0.9.dev10
+    - bw2calc >=2.0.dev16
+    - bw2data >=4.0.dev33
+    - bw2io >=0.9.dev27
     - bw_processing >=0.8.2
     - matrix_utils >=0.2.5
     - mrio_common_metadata
     - bw_migrations
     - numpy
     - "libblas=*=*mkl"
-    - pypardiso
+    - pypardiso >=0.4.6
     - python >=3.9
     - stats_arrays >=0.6.5
 
