@@ -35,7 +35,7 @@ requirements:
     - python >=3.9
     - rapidfuzz
     - scipy >=1.6
-    - stats_arrays >=0.6.5
+    - stats_arrays
     - tqdm
     - voluptuous >=0.12
     - whoosh

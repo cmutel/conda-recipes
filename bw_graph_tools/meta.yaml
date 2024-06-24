@@ -1,42 +1,45 @@
 {% set name = "bw_graph_tools" %}
-{% set version = "0.3" %}
-{% set sha256 = "a5c7a50a4d65a8d2704281f622f88faed205a9b5ad82a995a5c71f33baec4a63" %}
+{% set version = "0.3.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/bw_graph_tools-{{ version }}.tar.gz
+  sha256: 4631564e5df93d65588280c035343f34d2c7115fa69b9b954ecbc3be25f676e3
 
 build:
   noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
-  build:
-    - python
-    - setuptools
-
+  host:
+    - python >=3.9
+    - setuptools >=68.0
+    - pip
   run:
+    - python >=3.9
     - bw2calc >=2.0.dev13
-    - matrix_utils
-    - numpy
-    - scipy
     - bw_processing
+    - matrix_utils
+    - numpy <2
+    - scipy
 
 test:
   imports:
-    - {{ name }}
+    - bw_graph_tools
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
-  home: https://github.com/brightway-lca/bw_graph_tools
-  license: BSD 3-Clause
+  summary: Graph traversal class and utilities
+  license: BSD-3-Clause
   license_file: LICENSE
-  summary: 'Graph traversal class and utilities'
-  license_family: BSD
-  doc_url: https://github.com/brightway-lca/bw_graph_tools/blob/main/README.md
-  dev_url: https://github.com/brightway-lca/bw_graph_tools
+
+extra:
+  recipe-maintainers:
+    - cmutel

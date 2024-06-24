@@ -1,0 +1,47 @@
+{% set name = "bw_aggregation" %}
+{% set version = "1.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/bw_aggregation-{{ version }}.tar.gz
+  sha256: 71ff0e695e127ac693629bdd45af07ae7957401d7b96be15c48efd41d4b026ad
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+
+requirements:
+  host:
+    - python >=3.9
+    - setuptools >=68.0
+    - pip
+  run:
+    - python >=3.9
+    - bw2calc >=2.0.dev16
+    - bw2data >=4.0.dev36
+    - bw_graph_tools >=0.3.1
+    - bw_processing >=0.9.2
+    - fs
+    - matrix_utils >=0.4.1
+    - numpy
+
+test:
+  imports:
+    - bw_aggregation
+  # commands:
+  #   - pip check
+  requires:
+    - pip
+
+about:
+  summary: Use aggregated processes for quicker calculations
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - cmutel
