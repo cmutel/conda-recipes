@@ -1,6 +1,6 @@
 {% set name = "bw2io" %}
-{% set version = "0.9.dev26" %}
-{% set sha256 = "635a2ecca33a4548add4f094c80efb042426d4257a5ecacff6a567c110ad9503" %}
+{% set version = "0.9.dev28" %}
+{% set sha256 = "b65217c1ce5d2fa44e6166cf2ba4edbae812f63a5fd3318eeae17cdfd516a7fe" %}
 
 package:
   name: {{ name|lower }}
@@ -14,9 +14,7 @@ source:
 build:
   noarch: python
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
-  ignore_run_exports:
-    - python_abi
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
@@ -24,14 +22,16 @@ requirements:
     - setuptools
 
   run:
-    - bw2calc >=2.0.dev16
-    - bw2data >=4.0.dev32
+    - bw2calc >=2.0.dev17
+    - bw2data >=4.0.dev43
     - bw_migrations
     - bw_processing
+    - bw_simapro_csv
     - lxml
     - mrio_common_metadata
-    - numpy >=1.24
+    - numpy >=1.24,<2
     - openpyxl
+    - pyecospold
     - python >=3.10
     - requests
     - scipy

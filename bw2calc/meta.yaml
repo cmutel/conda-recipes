@@ -1,6 +1,6 @@
 {% set name = "bw2calc" %}
-{% set version = "2.0.dev12" %}
-{% set sha256 = "7295a87064f0c6bc175fca937269426dcb96b7673dca45ae2c98336f966d57ad" %}
+{% set version = "2.0.dev17" %}
+{% set sha256 = "ea55a4f32b3f6815fb5af9bce623f1fc51042c2194d686a3c191d3871fe52a17" %}
 
 package:
   name: {{ name|lower }}
@@ -14,7 +14,7 @@ source:
 build:
   noarch: python
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   ignore_run_exports:
     - python_abi
 
@@ -24,18 +24,22 @@ requirements:
     - setuptools
 
   run:
-    - python
-    - setuptools
-    - numpy >=1.20
+    - bw_processing >=0.9.5
+    - fsspec
+    - json-logging
+    - matrix_utils >=0.4.3
+    - numpy >=1.20,<2
+    - pandas
+    - pydantic
+    - python >=3.9
     - scipy
+    - setuptools
     - stats_arrays
-    - bw_processing >=0.8
-    - matrix_utils >=0.2.5
 
 test:
   requires:
     - pytest
-    - bw2data >=4.0.dev17
+    - bw2data >=4.0.dev40
 
   imports:
     - {{ name }}
@@ -43,7 +47,7 @@ test:
 about:
   home: https://brightway.dev/
   license: BSD 3-Clause
-  license_file: LICENSE.txt
+  license_file: LICENSE
   summary: 'The calculation engine for the Brightway2 life cycle assessment framework'
   license_family: BSD
   doc_url: https://docs.brightway.dev

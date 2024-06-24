@@ -1,0 +1,39 @@
+{% set name = "randonneur" %}
+{% set version = "0.0.4" %}
+{% set sha256 = "f42660443b01726c021a6485f93471468aa9251f1e1825a692b776889b994eec" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - frozendict
+    - tqdm
+
+test:
+  imports:
+    - {{ name }}
+
+about:
+  home: https://github.com/brightway-lca/randonneur
+  license: BSD 3-Clause
+  license_file: LICENSE
+  summary: 'Library to apply flexible changes to datasets '
+  license_family: BSD
+  doc_url: https://github.com/brightway-lca/randonneur/blob/main/README.md
+  dev_url: https://github.com/brightway-lca/randonneur

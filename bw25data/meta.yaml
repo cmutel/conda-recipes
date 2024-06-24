@@ -1,6 +1,6 @@
 {% set name = "bw2data" %}
-{% set version = "4.0.dev33" %}
-{% set sha256 = "cbe37b52acb08acd2e1e5326078d65b7a7747ceb8ec6166afe1d852d9f9c50e7" %}
+{% set version = "4.0.dev42" %}
+{% set sha256 = "7d839ef40f5d540a3c36ea3ce7cd742cd308facd2bf0568082ef1cf7ab108d2a" %}
 
 package:
   name: {{ name|lower }}
@@ -25,12 +25,15 @@ requirements:
 
   run:
     - bw2parameters >=0.6.6
-    - bw_processing >=0.8
+    - bw_processing >=0.9.5
+    - fsspec
     - lxml >=4.6
-    - numpy >=1.20
+    - numpy >=1.20,<2
     - peewee >=3.14.4
     - platformdirs
+    - pydantic-settings
     - python >=3.9
+    - rapidfuzz
     - scipy >=1.6
     - stats_arrays >=0.6.5
     - tqdm

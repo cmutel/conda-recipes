@@ -1,0 +1,43 @@
+{% set name = "flowmapper" %}
+{% set version = "0.1.1" %}
+{% set sha256 = "b17f7a9a97c775db47a38c14781410b8e5b988f27019d38b5395e6cc4ce575c2" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - openpyxl
+    - pandas
+    - pint
+    - pydantic
+    - randonneur
+    - tqdm
+    - typer
+
+test:
+  imports:
+    - {{ name }}
+
+about:
+  home: https://github.com/cmutel/flowmapper
+  license: MIT
+  license_file: LICENSE
+  summary: 'Mappings between elementary flows'
+  license_family: MIT
+  dev_url: https://github.com/cmutel/flowmapper

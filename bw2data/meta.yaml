@@ -1,31 +1,28 @@
 {% set name = "bw2data" %}
-{% set version = "3.6.5" %}
-{% set sha256 = "6a03315b0daf5acb6a88d93bbe8c3a5a0fcaa7ee7edb982f2817f0af6d18dad6" %}
+{% set version = "3.6.6" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/bw2data-{{ version }}.tar.gz
+  sha256: 3ce1f7b9242f0daa7762e4f98588af3acd5b921530713957a1edabbfd2579453
 
 build:
+  entry_points:
+    - bw2-uptodate = bw2data.bin.bw2_uptodate:main
   noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
-  ignore_run_exports:
-    - python_abi
 
 requirements:
-  build:
+  host:
     - python
-    - setuptools
-
+    - pip
   run:
+    - python
     - appdirs
-    - astunparse >=1.6.1
     - bw2parameters
     - docopt
     - eight
@@ -36,8 +33,7 @@ requirements:
     - peewee >=3.9.4
     - psutil
     - pyprind
-    - python
-    - requests
+    - requests >=1.1.0
     - scipy
     - stats_arrays
     - unicodecsv
@@ -47,13 +43,19 @@ requirements:
 
 test:
   imports:
-    - {{ name }}
+    - bw2data
+  commands:
+    - pip check
+    - bw2-uptodate --help
+  requires:
+    - pip
 
 about:
-  home: https://brightwaylca.org/
-  license: BSD 3-Clause
+  home: https://bitbucket.org/cmutel/brightway2-data
+  summary: Tools for the management of inventory databases and impact assessment methods. Part of the Brightway2 LCA Framework
+  license: BSD-3-Clause
   license_file: LICENSE.txt
-  summary: 'Data management for the Brightway2 life cycle assessment framework'
-  license_family: BSD
-  doc_url: https://docs.brightway.dev
-  dev_url: https://github.com/brightway-lca/brightway2-data/
+
+extra:
+  recipe-maintainers:
+    - cmutel
